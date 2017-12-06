@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\ORM\TableRegistry;
 
 /**
  * Showtimes Controller
@@ -23,6 +24,7 @@ class ShowtimesController extends AppController
 
         $this->set(compact('showtimes'));
         $this->set('_serialize', ['showtimes']);
+        
     }
 
     /**
@@ -40,6 +42,16 @@ class ShowtimesController extends AppController
 
         $this->set('showtime', $showtime);
         $this->set('_serialize', ['showtime']);
+        
+        $query = TableRegistry::get('movies')->find();
+        $query = $movies
+            ->find()
+            ->select(['id', 'name'])
+            ->from('movies','Rooms')
+            ->all();
+        /*foreach ($query as $movies) {
+            debug($movies->name);
+        } */
     }
 
     /**
@@ -50,6 +62,10 @@ class ShowtimesController extends AppController
     public function add()
     {
         $showtime = $this->Showtimes->newEntity();
+        
+        $movies=$this->Showtimes->Movies->find('list');
+        $rooms=$this->Showtimes->Rooms->find('list');
+        
         if ($this->request->is('post')) {
             $showtime = $this->Showtimes->patchEntity($showtime, $this->request->getData());
             if ($this->Showtimes->save($showtime)) {
@@ -59,7 +75,7 @@ class ShowtimesController extends AppController
             }
             $this->Flash->error(__('The showtime could not be saved. Please, try again.'));
         }
-        $this->set(compact('showtime'));
+        $this->set(compact('showtime', 'movies', 'rooms'));
         $this->set('_serialize', ['showtime']);
     }
 
