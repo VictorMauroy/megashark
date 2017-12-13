@@ -38,8 +38,8 @@ class RoomsController extends AppController
             'contain' => []
         ]);
 
-        $this->set('room', $room);
-        $this->set('_serialize', ['room']);
+            $this->set('room', $room);
+            $this->set('_serialize', ['room']);
     }
 
     /**

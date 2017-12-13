@@ -43,15 +43,6 @@ class ShowtimesController extends AppController
         $this->set('showtime', $showtime);
         $this->set('_serialize', ['showtime']);
         
-        $query = TableRegistry::get('movies')->find();
-        $query = $movies
-            ->find()
-            ->select(['id', 'name'])
-            ->from('movies','Rooms')
-            ->all();
-        /*foreach ($query as $movies) {
-            debug($movies->name);
-        } */
     }
 
     /**
@@ -123,4 +114,7 @@ class ShowtimesController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+    
+    
+    
 }
