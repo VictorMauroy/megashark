@@ -38,3 +38,36 @@
         </tr>
     </table>
 </div>
+<div class="rooms view large-9 medium-8 columns content">
+    <h3><?= h($showtime->id) ?></h3>
+    <table class="vertical-table">
+        <tr>
+            <th scope="row"><?= __('Id') ?></th>
+            <td><?= $this->Number->format($showtime->id) ?></td>
+        </tr>
+        <tr>
+            <th scope="row"><?= __('Movie Id') ?></th>
+            <td><?= $this->Number->format($showtime->movie_id) ?></td>
+        </tr>
+        <tr>
+            <th scope="row"><?= __('Room Id') ?></th>
+            <td><?= $this->Number->format($showtime->room_id) ?></td>
+        </tr>
+        <tr>
+            <th scope="row"><?= __('Start') ?></th>
+            <td><?= h($showtime->start) ?></td>
+        </tr>
+        <tr>
+            <th scope="row"><?= __('End') ?></th>
+            <td><?= h($showtime->end) ?></td>
+        </tr>
+        <tr>
+            <th scope="row"><?= __('Created') ?></th>
+            <td><?= h($showtime->created) ?></td>
+        </tr>
+        <tr>
+            <th scope="row"><?= __('Modified') ?></th>
+            <td><?= h($showtime->modified) ?></td>
+        </tr>
+    </table>
+</div>
